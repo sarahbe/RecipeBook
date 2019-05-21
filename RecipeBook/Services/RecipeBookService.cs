@@ -17,7 +17,7 @@ namespace RecipeBook.Services
 
         public void AddIngredient(Ingredient ingredient)
         {
-            throw new NotImplementedException();
+            _recipeBookContext.Ingredients.Add(ingredient);
         }
 
         public void AddRecipe(Recipe recipe)
@@ -93,7 +93,7 @@ namespace RecipeBook.Services
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return (_recipeBookContext.SaveChanges() >= 0);
         }
 
         public void UpdateIngredient(Ingredient ingredient)

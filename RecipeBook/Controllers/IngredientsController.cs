@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RecipeBook.Entities;
 using RecipeBook.Services;
 
 namespace RecipeBook.Controllers
@@ -18,7 +19,7 @@ namespace RecipeBook.Controllers
             _recipeBookService = recipeBookService;
         }
 
-        [HttpGet]
+        [HttpGet(Name ="GetIngredients")]
         public IActionResult GetIngredients()
         {
             var ingredients = _recipeBookService.GetIngredients();
@@ -36,6 +37,24 @@ namespace RecipeBook.Controllers
             }
 
             return Ok(ingredient);
+        }
+
+        //FromBody means that the parameter needs to be deserielized.
+        [HttpPost]
+        public IActionResult CreateIngredient([FromBody]Ingredient ingredient)
+        {
+            if (ingredient == null)
+            {
+                return BadRequest();
+            }
+
+            _recipeBookService.AddIngredient(ingredient);
+            if (!_recipeBookService.Save())
+            {
+                throw new Exception("Not saved!");
+            }
+
+            return CreatedAtRoute("GetIngredients", ingredient);
         }
 
     }

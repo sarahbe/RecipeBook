@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RecipeBook.DataLayer;
 using RecipeBook.Entities;
 
 namespace RecipeBook.Services
 {
     public class RecipeBookService : IRecipeBookService
     {
+        private RecipeBookContext _recipeBookContext;
+        public RecipeBookService(RecipeBookContext recipeBookContext)
+        {
+            _recipeBookContext = recipeBookContext;
+        }
+
         public void AddIngredient(Ingredient ingredient)
         {
             throw new NotImplementedException();
@@ -50,12 +57,13 @@ namespace RecipeBook.Services
 
         public Ingredient GetIngredient(int id)
         {
-            throw new NotImplementedException();
+            return _recipeBookContext.Ingredients.FirstOrDefault(a => a.Id == id);
         }
 
         public IEnumerable<Ingredient> GetIngredients()
         {
-            throw new NotImplementedException();
+            return _recipeBookContext.Ingredients.ToList();
+
         }
 
         public Recipe GetRecipe(int id)

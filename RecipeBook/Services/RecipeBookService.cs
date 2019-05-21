@@ -22,7 +22,7 @@ namespace RecipeBook.Services
 
         public void AddRecipe(Recipe recipe)
         {
-            throw new NotImplementedException();
+            _recipeBookContext.Recipes.Add(recipe);
         }
 
         public void AddRecipeDetailForRecipe(int recipeId, RecipeDetail recipeDetail)
@@ -68,7 +68,7 @@ namespace RecipeBook.Services
 
         public Recipe GetRecipe(int id)
         {
-            throw new NotImplementedException();
+            return _recipeBookContext.Recipes.FirstOrDefault(a => a.Id == id);
         }
 
         public RecipeDetail GetRecipeDetail(int id)
@@ -83,7 +83,7 @@ namespace RecipeBook.Services
 
         public IEnumerable<Recipe> GetRecipes()
         {
-            throw new NotImplementedException();
+            return _recipeBookContext.Recipes.ToList();
         }
 
         public IEnumerable<Step> GetStepsByRecipe(int recipeId)

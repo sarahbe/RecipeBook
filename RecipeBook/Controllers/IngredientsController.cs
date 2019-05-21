@@ -10,10 +10,10 @@ namespace RecipeBook.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IngredientController : ControllerBase
+    public class IngredientsController : Controller
     {
         private IRecipeBookService _recipeBookService;
-        public IngredientController(IRecipeBookService recipeBookService)
+        public IngredientsController(IRecipeBookService recipeBookService)
         {
             _recipeBookService = recipeBookService;
         }
@@ -25,7 +25,7 @@ namespace RecipeBook.Controllers
             return Ok(ingredients);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetIngredient(int id)
         {
             var ingredient = _recipeBookService.GetIngredient(id);

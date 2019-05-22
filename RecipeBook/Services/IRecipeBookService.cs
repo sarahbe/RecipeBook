@@ -34,7 +34,9 @@ namespace RecipeBook.Services
         void AddRecipeDetailForRecipe(int recipeId, RecipeDetail recipeDetail);
         void UpdateRecipeDetail(RecipeDetail recipeDetail);
         void DeleteRecipeDetail(RecipeDetail recipeDetail);
-       
+
+
+        bool RecipeExists(int recipeId);
         bool Save();
 
     }

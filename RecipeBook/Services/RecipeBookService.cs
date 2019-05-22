@@ -27,7 +27,8 @@ namespace RecipeBook.Services
 
         public void AddRecipeDetailForRecipe(int recipeId, RecipeDetail recipeDetail)
         {
-            throw new NotImplementedException();
+           // recipeDetail.RecipeId = recipeId;
+            _recipeBookContext.RecipeDetails.Add(recipeDetail);
         }
 
         public void AddStepForRecipe(int recipeId, Step step)
@@ -73,12 +74,12 @@ namespace RecipeBook.Services
 
         public RecipeDetail GetRecipeDetail(int id)
         {
-            throw new NotImplementedException();
+           return _recipeBookContext.RecipeDetails.FirstOrDefault(a => a.Id == id);
         }
 
         public IEnumerable<RecipeDetail> GetRecipeDetailsByRecipe(int recipeId)
         {
-            throw new NotImplementedException();
+          return  _recipeBookContext.RecipeDetails.Where(a => a.RecipeId == recipeId);
         }
 
         public IEnumerable<Recipe> GetRecipes()
@@ -89,6 +90,11 @@ namespace RecipeBook.Services
         public IEnumerable<Step> GetStepsByRecipe(int recipeId)
         {
             throw new NotImplementedException();
+        }
+
+        public bool RecipeExists(int recipeId)
+        {
+            return _recipeBookContext.Recipes.Any(a => a.Id == recipeId);
         }
 
         public bool Save()

@@ -80,7 +80,7 @@ namespace RecipeBook.Migrations
 
                     b.Property<int>("IngredientId");
 
-                    b.Property<int?>("RecipeId");
+                    b.Property<int>("RecipeId");
 
                     b.Property<int>("Sequence");
 
@@ -125,9 +125,10 @@ namespace RecipeBook.Migrations
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("RecipeBook.Entities.Recipe")
+                    b.HasOne("RecipeBook.Entities.Recipe", "Recipe")
                         .WithMany("RecipeDetail")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RecipeBook.Entities.Step", b =>

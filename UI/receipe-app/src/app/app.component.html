@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img src="/assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Recipe Book
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Recipes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ingredients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Groups</a>
+            </li>
+          </ul>
+        </div>
+
+</nav>
+<div>
+  <app-recipe-list></app-recipe-list>
+</div>
+<router-outlet></router-outlet>

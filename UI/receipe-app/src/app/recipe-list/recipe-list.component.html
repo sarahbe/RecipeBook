@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    Recipe List
+    {{pageTitle}}
   </div>
   <div class="card-body">
     <div class="row">
@@ -23,7 +23,13 @@
             <th>Rating</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr *ngFor='let recipe of recipes'>
+            <td>{{recipe.imageUrl}}</td>
+            <td>{{recipe.recipeName}}</td>
+            <td>{{recipe.recipeId}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

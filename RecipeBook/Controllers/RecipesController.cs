@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RecipeBook.Entities;
+using RecipeBook.Models;
 using RecipeBook.Services;
 
 namespace RecipeBook.Controllers
@@ -12,15 +15,21 @@ namespace RecipeBook.Controllers
     public class RecipesController : Controller
     {
         private IRecipeBookService _recipeBookService;
-        public RecipesController(IRecipeBookService recipeBookService)
+        private IMapper _mapper;
+        public RecipesController(IRecipeBookService recipeBookService, IMapper mapper)
         {
             _recipeBookService = recipeBookService;
+            _mapper = mapper;
         }
 
+        //[EnableCors("MyPolicy")]
         [HttpGet(Name = "GetRecipes")]
         public IActionResult GetRecipes()
         {
-            var recipes = _recipeBookService.GetRecipes();
+            var recipesFromRepo = _recipeBookService.GetRecipes();
+            //var recipes = AutoMapper.Mapper.Map<IEnumerable<RecipeViewModel>>(recipesFromRepo);
+
+            var recipes = _mapper.Map<IEnumerable<Recipe>, IEnumerable<RecipeViewModel>>(recipesFromRepo);
             return Ok(recipes);
         }
 

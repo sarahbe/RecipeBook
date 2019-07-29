@@ -1,3 +1,30 @@
-<p>
-  recipe-add works!
-</p>
+<div class="card">
+  <div class="card-header">
+    New Recipe
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="recipeName">Recipe Name</label>
+      </div>
+      <input type="text" class="form-control" id="txtRecipeName" placeholder="Recipe Name">
+      <div class="form-group">
+        <label for="category">Category</label>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" 
+            id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer"></div>
+</div>

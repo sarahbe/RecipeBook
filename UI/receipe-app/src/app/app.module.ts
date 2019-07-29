@@ -9,13 +9,15 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RecipeDetailGuard } from './recipe-detail/recipe-detail.guard';
+import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeListComponent,
     RecipeDetailComponent,
-    HomeComponent
+    HomeComponent,
+    RecipeAddComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import { RecipeDetailGuard } from './recipe-detail/recipe-detail.guard';
     RouterModule.forRoot([
       {path: 'recipes', component: RecipeListComponent},
       {path: 'recipes/:id', canActivate:[RecipeDetailGuard],component: RecipeDetailComponent},
+      {path: 'new-recipe', component: RecipeAddComponent},
       {path: 'home', component: HomeComponent},
       {path: '', redirectTo: 'home', pathMatch:'full'},
       {path: '**', redirectTo: 'home', pathMatch:'full'}

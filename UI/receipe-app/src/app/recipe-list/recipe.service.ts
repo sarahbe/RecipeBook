@@ -19,6 +19,11 @@ export class RecipeService {
         );
     }
 
+    getRecipe(id : number): Observable<IRecipe>{
+        return this.http.get<IRecipe>(this.recipeUrl + '/' + id).pipe(
+        );
+    }
+
     private handleError(err: HttpErrorResponse) {
         let errorMesssage = '';
         if (err.error instanceof ErrorEvent) {

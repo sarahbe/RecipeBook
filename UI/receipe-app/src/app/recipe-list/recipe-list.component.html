@@ -26,7 +26,7 @@
         <tbody>
           <tr *ngFor='let recipe of recipes'>
             <td>{{recipe.imageUrl}}</td>
-            <td>{{recipe.recipeName}}</td>
+            <td><a [routerLink]="['/recipes', recipe.id]">{{recipe.recipeName}}</a></td>
             <td>{{recipe.recipeId}}</td>
           </tr>
         </tbody>

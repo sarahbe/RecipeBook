@@ -11,6 +11,7 @@ export class RecipeListComponent implements OnInit {
   pageTitle: string = 'Recipe List';
   recipes: IRecipe[] = [];
   errorMessage: string;
+  
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
@@ -18,7 +19,6 @@ export class RecipeListComponent implements OnInit {
       recipes => this.recipes = recipes,
       error => this.errorMessage = <any>error
     );
-
   }
 
 }

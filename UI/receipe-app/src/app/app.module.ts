@@ -8,6 +8,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { RecipeDetailGuard } from './recipe-detail/recipe-detail.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'recipes', component: RecipeListComponent},
-      {path: 'recipes/:id', component: RecipeDetailComponent},
+      {path: 'recipes/:id', canActivate:[RecipeDetailGuard],component: RecipeDetailComponent},
       {path: 'home', component: HomeComponent},
       {path: '', redirectTo: 'home', pathMatch:'full'},
       {path: '**', redirectTo: 'home', pathMatch:'full'}

@@ -22,12 +22,10 @@ namespace RecipeBook.Controllers
             _mapper = mapper;
         }
 
-        //[EnableCors("MyPolicy")]
         [HttpGet(Name = "GetRecipes")]
         public IActionResult GetRecipes()
         {
             var recipesFromRepo = _recipeBookService.GetRecipes();
-            //var recipes = AutoMapper.Mapper.Map<IEnumerable<RecipeViewModel>>(recipesFromRepo);
 
             var recipes = _mapper.Map<IEnumerable<Recipe>, IEnumerable<RecipeViewModel>>(recipesFromRepo);
             return Ok(recipes);

@@ -19,5 +19,6 @@ namespace RecipeBook.DataLayer
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Step> Steps { get; set; }
         public DbSet<RecipeDetail> RecipeDetails { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

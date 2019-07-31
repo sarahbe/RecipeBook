@@ -22,6 +22,13 @@ namespace RecipeBook.Services
         void UpdateIngredient(Ingredient ingredient);
         void DeleteIngredient(Ingredient ingredient);
 
+        //Category
+        IEnumerable<Category> GetCategories();
+        Category GetCategory(int id);
+        void AddCategory(Category category);
+        //void UpdateCategory(Category category);
+        void DeleteCategory(Category category);
+
         //Step 
         IEnumerable<Step> GetStepsByRecipe(int recipeId);
         void AddStepForRecipe(int recipeId, Step step);
@@ -35,7 +42,7 @@ namespace RecipeBook.Services
         void UpdateRecipeDetail(RecipeDetail recipeDetail);
         void DeleteRecipeDetail(RecipeDetail recipeDetail);
 
-
+        bool CategoryExists(string categoryName);
         bool RecipeExists(int recipeId);
         bool Save();
 

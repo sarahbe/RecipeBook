@@ -20,6 +20,7 @@ namespace RecipeBook.Entities
         
         public int Sequence { get; set; }
 
+        [Required]
         public int IngredientId { get; set; }
 
         [ForeignKey("IngredientId")]

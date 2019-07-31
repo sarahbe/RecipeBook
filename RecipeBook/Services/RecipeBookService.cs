@@ -20,6 +20,11 @@ namespace RecipeBook.Services
             _recipeBookContext.Ingredients.Add(ingredient);
         }
 
+        public void AddCategory(Category category)
+        {
+            _recipeBookContext.Categories.Add(category);
+        }
+
         public void AddRecipe(Recipe recipe)
         {
             _recipeBookContext.Recipes.Add(recipe);
@@ -37,6 +42,11 @@ namespace RecipeBook.Services
         }
 
         public void DeleteIngredient(Ingredient ingredient)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCategory(Category category)
         {
             throw new NotImplementedException();
         }
@@ -64,6 +74,17 @@ namespace RecipeBook.Services
         public IEnumerable<Ingredient> GetIngredients()
         {
             return _recipeBookContext.Ingredients.ToList();
+
+        }
+
+        public Category GetCategory(int id)
+        {
+            return _recipeBookContext.Categories.FirstOrDefault(a => a.Id == id);
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+            return _recipeBookContext.Categories.ToList();
 
         }
 
@@ -95,6 +116,11 @@ namespace RecipeBook.Services
         public bool RecipeExists(int recipeId)
         {
             return _recipeBookContext.Recipes.Any(a => a.Id == recipeId);
+        }
+
+        public bool CategoryExists(string categoryName)
+        {
+            return _recipeBookContext.Categories.Any(a => a.Name.ToLower() == categoryName.ToLower());
         }
 
         public bool Save()

@@ -65,7 +65,7 @@ namespace RecipeBook.Controllers
                 throw new Exception("Not saved!");
             }
 
-            return CreatedAtRoute("GetCatgeories", category);
+            return CreatedAtRoute("GetCategories", category);
         }
 
     }

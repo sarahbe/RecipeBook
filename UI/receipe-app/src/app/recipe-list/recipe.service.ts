@@ -3,13 +3,14 @@ import { IRecipe } from './recipe';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { ICategory } from './category';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RecipeService {
     private recipeUrl = "https://localhost:44360/api/Recipes";
-
+    private categoryUrl = "https://localhost:44360/api/Categories";
     constructor(private http: HttpClient) { }
 
     getRecipes(): Observable<IRecipe[]> {
@@ -24,6 +25,12 @@ export class RecipeService {
         );
     }
 
+    getCategories():Observable<ICategory[]>
+    {
+        return this.http.get<ICategory[]>(this.categoryUrl).pipe(
+            tap(data => console.log('categories:' + JSON.stringify(data))) 
+        );
+    }
     private handleError(err: HttpErrorResponse) {
         let errorMesssage = '';
         if (err.error instanceof ErrorEvent) {

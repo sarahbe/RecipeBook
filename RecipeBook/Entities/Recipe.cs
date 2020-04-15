@@ -15,7 +15,7 @@ namespace RecipeBook.Entities
 
         public int CategoryId { get; set; }
 
-        public bool Valid { get; set; }
+        public bool Valid { get; set; } = true;
 
         public string ImageUrl { get; set; }
 

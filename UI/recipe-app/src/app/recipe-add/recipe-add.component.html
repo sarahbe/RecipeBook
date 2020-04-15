@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    New Recipe
+  </div>
+  <div class="card-body">
+    <form [formGroup] = "recipeForm" (ngSubmit)="saveRecipe()">
+      <div class="form-group">
+        <label for="recipeName">Recipe Name</label>
+      <input type="text" formControlName="recipeName" class="form-control" id="txtRecipeName" placeholder="Recipe Name">
+
+      </div>
+
+     
+      <div class="form-group">
+        <label for="category">Category</label>
+
+
+        <select class="form-control selectpicker" data-live-search="true" title="Select Category">
+          <option *ngFor="let category of categories">{{category.name}}</option>
+          <option><i><a>Add new catgeory ..</a></i></option>
+        </select>
+
+      </div>
+
+
+      <button type="submit" class="btn btn-primary mb-2">Save</button>
+
+    </form>
+  </div>
+  <!-- <div class="card-footer"></div> -->
+</div>
+
+<script>
+
+</script>

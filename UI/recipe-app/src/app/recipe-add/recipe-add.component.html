@@ -3,33 +3,65 @@
     New Recipe
   </div>
   <div class="card-body">
-    <form [formGroup] = "recipeForm" (ngSubmit)="saveRecipe()">
+    <form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()" novalidate>
       <div class="form-group">
         <label for="recipeName">Recipe Name</label>
-      <input type="text" formControlName="recipeName" class="form-control" id="txtRecipeName" placeholder="Recipe Name">
-
+        <input type="text" formControlName="recipeName" required minlength="3" class="form-control" id="txtRecipeName"
+          placeholder="Recipe Name"
+          [ngClass]="{'is-invalid': (recipeForm.get('recipeName').touched || recipeForm.get('recipeName').dirty) && !recipeForm.get('recipeName').valid}"
+          >
+          <span class="invalid-feedback">
+            <span *ngIf="recipeForm.get('recipeName').errors?.required">
+              Please enter a recipeName
+            </span>
+            <span *ngIf="recipeForm.get('recipeName').errors?.minlength">
+              Please enter at least 3 characters.
+            </span>
+          </span>
       </div>
 
-     
+
       <div class="form-group">
         <label for="category">Category</label>
-
-
-        <select class="form-control selectpicker" data-live-search="true" title="Select Category">
+        <select formControlName="category" class="form-control selectpicker" data-live-search="true" title="Select Category">
           <option *ngFor="let category of categories">{{category.name}}</option>
-          <option><i><a>Add new catgeory ..</a></i></option>
+          <!-- TODO : adding a new category is not working-->
+          <option data-toggle="modal" data-target="#exampleModal"><i>Add new catgeory ..</i></option>
         </select>
 
       </div>
 
 
       <button type="submit" class="btn btn-primary mb-2">Save</button>
-
     </form>
   </div>
   <!-- <div class="card-footer"></div> -->
 </div>
-
-<script>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="categoryName" class="col-form-label">Category Name:</label>
+            <input type="text" class="form-control" id="categoryName">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add Category</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'>
 
 </script>

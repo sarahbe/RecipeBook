@@ -36,7 +36,8 @@ export class RecipeService {
     getCategories():Observable<ICategory[]>
     {
         return this.http.get<ICategory[]>(this.categoryUrl).pipe(
-            tap(data => console.log('categories:' + JSON.stringify(data))) 
+            tap(data => console.log('categories:' + JSON.stringify(data))) ,
+            catchError(this.handleError)
         );
     }
     private handleError(err: HttpErrorResponse) {
